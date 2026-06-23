@@ -195,48 +195,120 @@ sections.forEach(section => {
 
 
 // ============================================================
-//  FORMULÁRIO — feedback visual ao enviar
+//  FORMULÁRIO — envio funcional
 // ============================================================
+
+// ── OPÇÃO A: mailto (funciona sem configuração) ──────────────
+// Abre o cliente de e-mail do usuário com os dados preenchidos.
+// Troque pelo Formspree (Opção B) quando tiver uma conta.
+
+// ── OPÇÃO B: Formspree (recomendado para produção) ───────────
+// 1. Crie conta gratuita em https://formspree.io
+// 2. Crie um Form e copie o endpoint (ex: https://formspree.io/f/xyzabcde)
+// 3. Defina USE_FORMSPREE = true e cole o endpoint abaixo
+
+const USE_FORMSPREE   = false;
+const FORMSPREE_URL   = 'https://formspree.io/f/SEU_ID_AQUI'; // ← troque
+const SEU_EMAIL       = 'davidjuniorsilva10@gmail.com';
+
+// ─────────────────────────────────────────────────────────────
+
 const sendBtn = document.querySelector('.btn-full');
 
+function shakeBtn() {
+  gsap.fromTo(sendBtn,
+    { x: -8 },
+    { x: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)',
+      keyframes: { x: [-8, 8, -6, 6, -3, 3, 0] }
+    }
+  );
+}
+
+function feedbackSucesso() {
+  const textoOriginal = sendBtn.textContent;
+  sendBtn.textContent = '✓ Mensagem enviada!';
+  sendBtn.style.background = '#10b981';
+  sendBtn.disabled = true;
+
+  gsap.fromTo(sendBtn,
+    { scale: 0.95 },
+    { scale: 1, duration: 0.4, ease: 'back.out(2)' }
+  );
+
+  setTimeout(() => {
+    sendBtn.textContent      = textoOriginal;
+    sendBtn.style.background = '';
+    sendBtn.disabled         = false;
+    document.getElementById('nome').value     = '';
+    document.getElementById('email').value    = '';
+    document.getElementById('assunto').value  = '';
+    document.getElementById('mensagem').value = '';
+  }, 3000);
+}
+
+function feedbackErro() {
+  const textoOriginal = sendBtn.textContent;
+  sendBtn.textContent = '✗ Erro ao enviar. Tente novamente.';
+  sendBtn.style.background = '#ef4444';
+  sendBtn.disabled = true;
+
+  setTimeout(() => {
+    sendBtn.textContent      = textoOriginal;
+    sendBtn.style.background = '';
+    sendBtn.disabled         = false;
+  }, 3000);
+}
+
 if (sendBtn) {
-  sendBtn.addEventListener('click', () => {
+  sendBtn.addEventListener('click', async () => {
     const nome     = document.getElementById('nome').value.trim();
     const email    = document.getElementById('email').value.trim();
+    const assunto  = document.getElementById('assunto').value.trim();
     const mensagem = document.getElementById('mensagem').value.trim();
 
+    // Validação básica
     if (!nome || !email || !mensagem) {
-      // Agita o botão se campos vazios
-      gsap.fromTo(sendBtn,
-        { x: -8 },
-        { x: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)',
-          keyframes: { x: [-8, 8, -6, 6, -3, 3, 0] }
-        }
-      );
+      shakeBtn();
       return;
     }
 
-    // Feedback de sucesso
-    const textoOriginal = sendBtn.textContent;
-    sendBtn.textContent = '✓ Mensagem enviada!';
-    sendBtn.style.background = '#10b981';
-    sendBtn.disabled = true;
+    // Validação de formato de e-mail
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailValido) {
+      shakeBtn();
+      document.getElementById('email').focus();
+      return;
+    }
 
-    gsap.fromTo(sendBtn,
-      { scale: 0.95 },
-      { scale: 1, duration: 0.4, ease: 'back.out(2)' }
-    );
+    // ── OPÇÃO B: Formspree ──
+    if (USE_FORMSPREE) {
+      sendBtn.textContent = 'Enviando...';
+      sendBtn.disabled    = true;
 
-    setTimeout(() => {
-      sendBtn.textContent  = textoOriginal;
-      sendBtn.style.background = '';
-      sendBtn.disabled = false;
+      try {
+        const res = await fetch(FORMSPREE_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ nome, email, assunto, mensagem }),
+        });
 
-      // Limpa os campos
-      document.getElementById('nome').value     = '';
-      document.getElementById('email').value    = '';
-      document.getElementById('assunto').value  = '';
-      document.getElementById('mensagem').value = '';
-    }, 3000);
+        if (res.ok) {
+          feedbackSucesso();
+        } else {
+          feedbackErro();
+        }
+      } catch {
+        feedbackErro();
+      }
+
+    // ── OPÇÃO A: mailto ──
+    } else {
+      const subject = encodeURIComponent(assunto || `Contato de ${nome} via portfólio`);
+      const body    = encodeURIComponent(
+        `Nome: ${nome}\nE-mail: ${email}\n\n${mensagem}`
+      );
+      window.location.href = `mailto:${SEU_EMAIL}?subject=${subject}&body=${body}`;
+      feedbackSucesso();
+    }
   });
 }
