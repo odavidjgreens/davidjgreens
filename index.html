@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>David | Desenvolvedor Web & Mobile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">david<span>.</span>dev</div>
+      <div class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#skills">Skills</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo escuro">
+        <span class="icon-sun">☀️</span>
+        <span class="icon-moon">🌙</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">✦ Disponível para freelance</div>
+      <h1 class="hero-title">
+        Olá, sou<br>
+        <span class="name">David</span>
+      </h1>
+      <p class="hero-subtitle">
+        Desenvolvedor web &amp; mobile criando experiências digitais rápidas, acessíveis e bem feitas.
+      </p>
+      <div class="hero-code">
+        <span class="kw">const</span> dev = {<br>
+        &nbsp;&nbsp;stack: [<span class="str">'React'</span>, <span class="str">'Node.js'</span>, <span class="str">'React Native'</span>],<br>
+        &nbsp;&nbsp;status: <span class="str">'open to work'</span> <span class="cursor"></span><br>
+        }
+      </div>
+      <div class="hero-btns">
+        <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+        <a href="#contato" class="btn btn-ghost">Entrar em contato</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="container">
+      <div class="sobre-grid">
+        <div class="sobre-text-col">
+          <div class="section-label">Sobre mim</div>
+          <h2 class="section-title">Transformo ideias em produtos digitais</h2>
+          <p class="sobre-text">Sou desenvolvedor fullstack com foco em web e mobile. Gosto de construir produtos que resolvem problemas reais — do design à entrega, com código limpo e atenção aos detalhes.</p>
+          <p class="sobre-text">Trabalho de forma remota com clientes de todo o Brasil, entregando projetos no prazo e com comunicação transparente.</p>
+        </div>
+        <div class="sobre-stats">
+          <div class="stat-box">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Anos de experiência</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">20+</div>
+            <div class="stat-label">Projetos entregues</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">15+</div>
+            <div class="stat-label">Clientes atendidos</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Satisfação garantida</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-label">Tecnologias</div>
+      <h2 class="section-title">O que eu sei fazer</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">⚛️</div>
+          <div class="skill-name">React / Next.js</div>
+          <div class="skill-desc">Interfaces modernas com componentização e performance</div>
+          <div class="skill-bar-wrap"><div class="skill-bar" data-width="92"></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📱</div>
+          <div class="skill-name">React Native</div>
+          <div class="skill-desc">Apps mobile para iOS e Android com código compartilhado</div>
+          <div class="skill-bar-wrap"><div class="skill-bar" data-width="82"></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🟢</div>
+          <div class="skill-name">Node.js / APIs</div>
+          <div class="skill-desc">Back-end, REST APIs e integrações com serviços externos</div>
+          <div class="skill-bar-wrap"><div class="skill-bar" data-width="85"></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🗄️</div>
+          <div class="skill-name">Banco de dados</div>
+          <div class="skill-desc">PostgreSQL, MySQL e MongoDB para estruturar seus dados</div>
+          <div class="skill-bar-wrap"><div class="skill-bar" data-width="78"></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">☁️</div>
+          <div class="skill-name">Deploy & DevOps</div>
+          <div class="skill-desc">Vercel, Railway, AWS — sua aplicação no ar e estável</div>
+          <div class="skill-bar-wrap"><div class="skill-bar" data-width="72"></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🎨</div>
+          <div class="skill-name">UI / Design</div>
+          <div class="skill-desc">Figma e Tailwind para interfaces bonitas e funcionais</div>
+          <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos">
+    <div class="container">
+      <div class="section-label">Portfólio</div>
+      <h2 class="section-title">Projetos em destaque</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-thumb" style="background:#eef2ff">🛒</div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span>
+            </div>
+            <div class="project-title">Plataforma de E-commerce</div>
+            <div class="project-desc">Loja virtual completa com painel de administração, pagamentos e gestão de estoque em tempo real.</div>
+            <a href="#" class="project-link">Ver projeto →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb" style="background:#f0fdf4">📊</div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag">React Native</span><span class="tag">Firebase</span>
+            </div>
+            <div class="project-title">App de Gestão Financeira</div>
+            <div class="project-desc">Aplicativo mobile para controle de gastos, metas e relatórios visuais com gráficos interativos.</div>
+            <a href="#" class="project-link">Ver projeto →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb" style="background:#fef3c7">🏠</div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag">Next.js</span><span class="tag">Tailwind</span><span class="tag">Prisma</span>
+            </div>
+            <div class="project-title">Sistema de Agendamento</div>
+            <div class="project-desc">Plataforma para agendamentos com calendário integrado, notificações por e-mail e painel para empresas.</div>
+            <a href="#" class="project-link">Ver projeto →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-thumb" style="background:#fce7f3">🎓</div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">AWS</span>
+            </div>
+            <div class="project-title">Plataforma EAD</div>
+            <div class="project-desc">LMS completo com player de vídeo, módulos de curso, certificados automáticos e área de alunos.</div>
+            <a href="#" class="project-link">Ver projeto →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="container">
+      <div class="contato-inner">
+        <div class="contato-info">
+          <div class="section-label">Contato</div>
+          <h2 class="section-title">Vamos trabalhar juntos?</h2>
+          <p class="contato-desc">Estou disponível para novos projetos. Me conta o que você precisa e entro em contato em até 24h.</p>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-label">E-mail</div>
+              <div class="contact-value">david@email.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div>
+              <div class="contact-label">WhatsApp</div>
+              <div class="contact-value">+55 (47) 9 0000-0000</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🔗</div>
+            <div>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">linkedin.com/in/david</div>
+            </div>
+          </div>
+        </div>
+        <div class="contato-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" placeholder="Seu nome"/>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" placeholder="seu@email.com"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="assunto">Assunto</label>
+            <input type="text" id="assunto" placeholder="Sobre o projeto..."/>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" placeholder="Conte um pouco sobre o que você precisa..."></textarea>
+          </div>
+          <button class="btn btn-primary btn-full" type="button">Enviar mensagem</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 David — Feito com dedicação ✦</p>
+  </footer>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
